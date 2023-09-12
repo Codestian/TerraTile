@@ -1,0 +1,33 @@
+{
+	"schemaVersion": 1,
+	"id": "terratile",
+	"version": "${version}",
+	"name": "TerraTile",
+	"description": "A mod built for BTE, overlaying map tiles over the world for building.",
+	"authors": [
+		"Codestian"
+	],
+	"contact": {
+		"homepage": "https://github.com/Codestian/TerraTile",
+		"sources": "https://github.com/Codestian/TerraTile"
+	},
+	"license": "MIT",
+	"icon": "assets/terratile/icon.png",
+	"environment": "*",
+	"entrypoints": {
+		"main": [
+			"com.codestian.TerraTile"
+		],
+		"client": [
+			"com.codestian.TerraTileClient"
+		]
+	},
+	"mixins": [],
+	"depends": {
+		"fabricloader": ">=0.14.22",
+		"minecraft": "~1.20.1",
+		"java": ">=17",
+		"fabric-api": "*"
+	},
+	"suggests": {}
+}
