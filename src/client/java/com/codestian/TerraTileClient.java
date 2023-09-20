@@ -143,6 +143,21 @@ public class TerraTileClient implements ClientModInitializer {
             );
         });
 
+        ClientCommandRegistrationCallback.EVENT.register((dispatcher, dedicated) -> {
+            dispatcher.register(ClientCommandManager.literal("terratile")
+                    .then(ClientCommandManager.literal("check")
+                            .executes(context -> {
+
+                                context.getSource().sendFeedback(Text.literal("Coordinates: " + x + ", " + y + ", " + z));
+                                context.getSource().sendFeedback(Text.literal("Rotation: " + rotationDegree));
+                                context.getSource().sendFeedback(Text.literal("Scale: " + scale));
+
+                                return 0;
+                            })
+                    )
+            );
+        });
+
         ClientTickEvents.END_CLIENT_TICK.register((MinecraftClient client) -> {
             while (keyBindingNorth.wasPressed()) {
                 z -= 0.5;
@@ -170,7 +185,6 @@ public class TerraTileClient implements ClientModInitializer {
             while (keyBindingScaleDown.wasPressed()) {
                 scale -= 1;
             }
-
 
             while (keyBindingStart.wasPressed()) {
 
@@ -232,8 +246,6 @@ public class TerraTileClient implements ClientModInitializer {
                     bind15 = textureManager.registerDynamicTexture("terratile", nativeImageBackedTexture14);
                     isDisplayed = true;
                 }
-
-
             }
 
             while (keyBindingRotateLeft.wasPressed()) {
